@@ -23,11 +23,16 @@
 
 .logoStyle {
   font-family: Bungee;
+  font-size: 36px;
 }
 
 .downArrow {
-  max-height: 20px;
-  width: 20px;
+  height: 55px;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* 
