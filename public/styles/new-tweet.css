@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 
-.textArea {
+.tweetArea {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -12,10 +12,34 @@
   padding-bottom: 1em;
 }
 
+.tweetArea {
+
+}
+
 .buttonAndCounter {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  /* padding-top: 1em;
-  padding-bottom: 1em; */
+  font-family: Bungee;
+}
+
+.button {
+  background-color: #4F000B;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+#tweet-text {
+  color: #545149;
+  background-color: #f4f1ec;
+  font-family: Source Sans Pro, sans-serif;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  border: none;
+  border-bottom: 4px solid #545149;
+  font-weight: bold;
 }
