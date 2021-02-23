@@ -9,6 +9,15 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+nav {
+  font-family: Bungee;
+  font-size: 36px;
+}
+
+.logoStyle {
+  font-family: Bungee;
+  /* font-size: 36px; */
+}
 
 /*
  * Global layout stuff
@@ -17,6 +26,7 @@ html {
 body {
   color: #545149;
   background-color: #f4f1ec;
+  font-family: Source Sans Pro, sans-serif;
   font-size: 24px;
 }
 
