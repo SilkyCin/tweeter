@@ -9,13 +9,13 @@
   padding-right: 1.5em;
   margin: 0px;
   border: 0px;
-  background-color: #4056A1;
+  background-color: #4F000B;
   color: #FFFFFF;
-  font-family: Source Sans Pro;
 }
 
 .newTweet {
   max-height: 120px;
+  font-family: Source Sans Pro;
   font-size: 26px;
   margin: 0;
   color: white;
@@ -31,9 +31,9 @@
 }
 
 /* 
-• Be 120 pixels in height
-• Be the full width of the viewport.
-• Have #4056A1 as its default background colour.
-• Have #FFFFFF as its default font colour
-The <span> within the <nav> has Bungee as it's default font-family
-• The inner content should not be touching the viewport edge on any side and should remain 1.5ems away from all edges */
+✓ Be 120 pixels in height
+✓ Be the full width of the viewport.
+✓ Have #4056A1 as its default background colour.
+✓ Have #FFFFFF as its default font colour
+✓ The <span> within the <nav> has Bungee as it's default font-family
+✓ The inner content should not be touching the viewport edge on any side and should remain 1.5ems away from all edges */
