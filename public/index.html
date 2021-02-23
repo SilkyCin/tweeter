@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/layout.css" />
     <link rel="stylesheet" type="text/css" href="/styles/nav.css" />
     <link rel="stylesheet" type="text/css" href="/styles/header.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/new-tweet.css" />
     
 
     <!-- External JS -->
@@ -42,11 +43,28 @@
               <h2><strong>Robin</strong> Scherbatsky</h2>
           </div>
     </header>
+    <div>
+    </div>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <h1>This is a header</h1>
-      <p>Cupcake ipsum dolor. Sit amet marshmallow topping cheesecake muffin. Halvah croissant candy canes bonbon candy. Apple pie jelly beans topping carrot cake danish tart cake cheesecake. Muffin danish chocolate soufflé pastry icing bonbon oat cake. Powder cake jujubes oat cake. Lemon drops tootsie roll marshmallow halvah carrot cake.</p>
+      <section class="new-tweet">
+        <!-- <h2>Compose Tweet</h2> -->
+        <form action="/" method="POST">
+          <div class="textArea">
+            <label for="tweet-text">What are you humming about?</label>
+            <textarea name="text" id="tweet-text"></textarea>
+          </div>
+          <div class=buttonAndCounter>
+            <div class=button>
+              <button type="submit">Tweet</button>
+            </div>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+      <!-- <h1>This is a header</h1>
+      <p>Cupcake ipsum dolor. Sit amet marshmallow topping cheesecake muffin. Halvah croissant candy canes bonbon candy. Apple pie jelly beans topping carrot cake danish tart cake cheesecake. Muffin danish chocolate soufflé pastry icing bonbon oat cake. Powder cake jujubes oat cake. Lemon drops tootsie roll marshmallow halvah carrot cake.</p> -->
     </main>
   </body>
 </html>
