@@ -1,19 +1,17 @@
-.navStyle {
+.navbar {
   display: flex;
   justify-content: space-between;
   height: 120px;
   width: 100%;
-  padding-top: 1.5em;
-  padding-left: 1.5em;
-  padding-bottom: 1.5em;
-  padding-right: 1.5em;
-  margin: 0px;
-  border: 0px;
+  padding: 1.5em;
   background-color: #4F000B;
   color: #FFFFFF;
+  overflow: hidden;
+  position: fixed; /*sets navbar to fixed position*/
+  top: 0; /*sets position to the top*/
 }
 
-.newTweet {
+.write-a-tweet {
   max-height: 120px;
   font-family: Source Sans Pro;
   font-size: 26px;
@@ -21,24 +19,17 @@
   color: white;
 }
 
-.logoStyle {
+.logo {
   font-family: Bungee;
   font-size: 36px;
 }
 
-.downArrow {
+.navright {
   height: 55px;
   width: 200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  font-size: 26px;
 }
-
-/* 
-✓ Be 120 pixels in height
-✓ Be the full width of the viewport.
-✓ Have #4056A1 as its default background colour.
-✓ Have #FFFFFF as its default font colour
-✓ The <span> within the <nav> has Bungee as it's default font-family
-✓ The inner content should not be touching the viewport edge on any side and should remain 1.5ems away from all edges */

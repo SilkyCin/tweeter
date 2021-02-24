@@ -14,27 +14,29 @@
     <link rel="stylesheet" type="text/css" href="/styles/nav.css" />
     <link rel="stylesheet" type="text/css" href="/styles/header.css" />
     <link rel="stylesheet" type="text/css" href="/styles/new-tweet.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/tweet-container.css" />
     
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/5b19f75997.js" crossorigin="anonymous"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
     <!-- <iframe src="navbar.html" class="navbar" /> -->
-    <nav class="navStyle">
-      <span class="logoStyle">Tweeter</span>
-      
-      <div class="downArrow">
-        <span class="newTweet"><strong>Write</strong> a new tweet </span>
+    <nav class="navbar">
+      <span class="logo">Tweeter</span>
+      <span class="navright">
+        <span class="write-a-tweet"><strong>Write</strong> a new tweet </span>
         <img src="/images/thick-down-arrow.png" width=20px height=20px> 
-      </div>
+      </span>
     </nav>
-    <header class="header">
+    <header class="profile-background">
         <div>
           <img src="/images/profile-hex.png"> 
         </div>
@@ -48,20 +50,37 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <section class="new-tweet">
-        <!-- <h2>Compose Tweet</h2> -->
-        <form action="/tweet" method="POST">
-          <div class="tweetArea">
-            <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
+      <form class ="tweet-box" action="/tweet" method="POST">
+        <div class="write-tweet">
+          <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
+        </div>
+        <div class="button-counter">
+          <button type="submit" class="button">Tweet</button>
+          <output name="counter" id="counter" for="tweet-text">140</output>
+        </div>
+      </form>
+      <!-- <article class="other-tweets">
+        <header>
+          <div>
+            <span>
+              <i class="far fa-user fa-lg"></i>
+              Barney
+            </span>
           </div>
-          <div class=buttonAndCounter>
-            <button type="submit" class="button">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+          <span class="handle">@Stinsonator</span>
+        </header>
+        <div class="txt">“When I get sad, I stop being sad and be awesome instead.”</div>
+        <footer>
+          <span>10 days ago</span>
+          <div>
+            <i class="fas fa-flag fa-sm"></i>
+            <i class="fas fa-retweet fa-sm"></i>
+            <i class="fas fa-heart fa-sm"></i>
           </div>
-        </form>
-      </section>
-      <!-- <h1>This is a header</h1>
-      <p>Cupcake ipsum dolor. Sit amet marshmallow topping cheesecake muffin. Halvah croissant candy canes bonbon candy. Apple pie jelly beans topping carrot cake danish tart cake cheesecake. Muffin danish chocolate soufflé pastry icing bonbon oat cake. Powder cake jujubes oat cake. Lemon drops tootsie roll marshmallow halvah carrot cake.</p> -->
+        </footer>
+      </article> -->
+    <section id="tweets-container">
+    </section>
     </main>
   </body>
 </html>

@@ -1,9 +1,15 @@
-.textarea {
+.tweet-box {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #f4f1ec;
+  border-radius: 25px;
+}
+
+.write-tweet {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: 1em;
 }
 
 #tweet-text {
@@ -19,7 +25,7 @@
 }
 
 .button {
-  background-color: #4F000B;
+  background-color: #FF9B54;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -28,10 +34,12 @@
   border-radius: 12px
 }
 
-.buttonAndCounter {
+.button-counter {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   font-family: Bungee;
-  padding-bottom: 2em;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
 }

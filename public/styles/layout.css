@@ -20,8 +20,9 @@ html {
 
 /* Body of page; doesn't need "." in front of body because we are not calling on it using a class */
 body {
+  padding-top: 120px;
   color: #545149;
-  background-color: #f4f1ec;
+  background-color: #720026;
   font-family: Source Sans Pro, sans-serif;
   font-size: 24px;
 }
@@ -38,7 +39,7 @@ body {
   margin: auto;
   width: 90%;
   color: #545149;
-  background-color: #f4f1ec;
+  background-color: #720026;
   font-family: Source Sans Pro, sans-serif;
   font-size: 24px;
 }
