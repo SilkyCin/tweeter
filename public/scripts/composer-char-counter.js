@@ -10,7 +10,6 @@ const characterCounter = function (){
       $("#counter").css("color", "#545149")
       $("#counter").text(`${numOfCharsLeft} characters left`)
     }
-    console.log("whatttttt!", this);
   });
 }
 

@@ -15,9 +15,6 @@
 $(document).ready(function () {
   
   
-  // Test / driver code (temporary). Eventually will get this from the server.
-  const data = []
-
   // takes HTML formated tweet and puts it inside of container within page
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
@@ -52,7 +49,7 @@ $(document).ready(function () {
     return $tweet;
   };
   
-  // renderTweets(data);
+  // renderTweets();
 
   // this function uses AJAX to post tweets to database
   // listen to form submission with JQuery's submit handler
@@ -69,14 +66,17 @@ $(document).ready(function () {
     if (serializeData.length > 145) {
       alert("Please keep your tweet under 140 characters");
     } else {
-    $.ajax({ 
-      url:"/tweets", 
-      data: serializeData, 
-      method: "POST",
-      // success: function() {
-      //   console.log("success");
-      // }
-    }).then(console.log("success"))
+      $.ajax({ 
+        url:"/tweets", 
+        data: serializeData, 
+        method: "POST",
+        // success: function() {
+        //   console.log("success");
+        // }
+      }).then(() => loadTweets())
+      $(".tweet-box").trigger("reset");
+      $("#counter").text(`140`);
+      $("#tweet-text").focus();
     } 
   });
 
@@ -85,9 +85,10 @@ $(document).ready(function () {
       url: "/tweets", 
       method: 'GET',
       success: "this get request was a success"
-    }).then(renderTweets)
+    }).then((tweets) => renderTweets(tweets))
   }
-  loadTweets(renderTweets);
+  loadTweets();
+  
   
 
 });
