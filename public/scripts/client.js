@@ -24,6 +24,13 @@ $(document).ready(function () {
   }
   
   const createTweetElement = function(tweet) {
+
+    const escape =  function(str) {
+      let div = document.createElement('div');
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    }
+
     // converts given tweet object to HTML
     let $tweet = $(`<article class="other-tweets">
       <header>
@@ -35,7 +42,7 @@ $(document).ready(function () {
         </div>
         <span class="handle">${tweet.user.handle}</span>
       </header>
-      <div class="txt">${tweet.content.text}</div>
+      <div class="txt">${escape(tweet.content.text)}</div>
       <footer>
         <span class="timestamp">${tweet.created_at}</span>
         <div>
