@@ -4,16 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-//  pair this with monitorEvents(document.getElementById("tweet-text")) written in browser's console to view details
-// $(() => {
-//   document.addEventListener("dblclick", (event) => {
-//     console.log(event);
-//   });
-// })
-
-
 $(document).ready(function () {
-  
   
   // takes HTML formated tweet and puts it inside of container within page
   const renderTweets = function(tweets) {
@@ -24,15 +15,16 @@ $(document).ready(function () {
   }
   
   const createTweetElement = function(tweet) {
-
+    // prevent XSS attacks via use of escape below
     const escape =  function(str) {
       let div = document.createElement('div');
       div.appendChild(document.createTextNode(str));
       return div.innerHTML;
     }
 
-    // converts given tweet object to HTML
-    let $tweet = $(`<article class="other-tweets">
+    // converts text from tweet to HTML template
+    let $tweet = $(
+      `<article class="other-tweets">
       <header>
         <div>
           <span>
@@ -42,6 +34,7 @@ $(document).ready(function () {
         </div>
         <span class="handle">${tweet.user.handle}</span>
       </header>
+      // escape used here to prevent XSS attacks
       <div class="txt">${escape(tweet.content.text)}</div>
       <footer>
         <span class="timestamp">${tweet.created_at}</span>
@@ -51,12 +44,11 @@ $(document).ready(function () {
           <i class="fas fa-heart fa-sm"></i>
         </div>
       </footer>
-    </article>`)
-    
+    </article>`
+    )
     return $tweet;
   };
   
-  // renderTweets();
 
   // this function uses AJAX to post tweets to database
   // listen to form submission with JQuery's submit handler
@@ -64,27 +56,36 @@ $(document).ready(function () {
     // prevent the default form submission process
     event.preventDefault();
     // serialize() turns form data into query string because our server is configured to receive that data format
-    const serializeData = $(".tweet-box").serialize();
-    //serialized data needs to be sent to the server via the data field of the AJAX post request
-    console.log("before $.ajax: ", serializeData);
-    if (serializeData === "text=") {
-      alert("Please add text to tweet before submitting");
-    } 
-    if (serializeData.length > 145) {
-      alert("Please keep your tweet under 140 characters");
-    } else {
+    const serializeData = $(this).serialize();
+    // $.val() is Jquery and returns the text value with the spaces
+      const textLength = $("#tweet-text").val().length;
+
+      if (!textLength) {
+        //inserts custom message in HTML
+        $("#msg").text("Your tweet must contain a message");
+        //coding to make the error message appear on page
+        $("div#error").slideDown();
+        return;
+      } 
+      if (textLength > 140) {
+        $("#msg").text("Your tweet is longer than 140 characters");
+        $("div#error").slideDown();
+        return;
+      }
+      //serialized data gets sent to the server via the data field of AJAX post request 
       $.ajax({ 
         url:"/tweets", 
         data: serializeData, 
         method: "POST",
-        // success: function() {
-        //   console.log("success");
-        // }
-      }).then(() => loadTweets())
-      $(".tweet-box").trigger("reset");
-      $("#counter").text(`140`);
-      $("#tweet-text").focus();
-    } 
+      }).then(() => loadTweets()) 
+      //clear the message from the box after submit box is hit
+        $(".tweet-box").trigger("reset");
+        // resets counter to 140
+        $("#counter").text('140'); 
+        // hides error message when problem is corrected, after submit button hit
+        $("div#error").slideUp(); 
+        // activates cursor in text box automatically
+        $("#tweet-text").focus(); 
   });
 
   const loadTweets = function() {
@@ -95,7 +96,5 @@ $(document).ready(function () {
     }).then((tweets) => renderTweets(tweets))
   }
   loadTweets();
-  
-  
 
 });

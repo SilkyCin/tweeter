@@ -50,6 +50,12 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <!-- Create your own tweet section -->
+      <div id="error" class="error-msg">
+        <i id="exclamation" class="fas fa-exclamation-triangle"></i>
+        <p id="msg"></p>
+        <i id="exclamation" class="fas fa-exclamation-triangle"></i>
+      </div>
       <form class ="tweet-box" id="new-tweet" action="/tweet" method="POST">
         <div class="write-tweet">
           <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
@@ -59,29 +65,31 @@
           <output name="counter" id="counter" for="tweet-text">140</output>
         </div>
       </form>
-      <!-- <article class="other-tweets">
-        <header>
-          <div>
-            <span>
-              <i class="far fa-user fa-lg"></i>
-              Barney
-            </span>
-          </div>
-          <span class="handle">@Stinsonator</span>
-        </header>
-        <div class="txt">“When I get sad, I stop being sad and be awesome instead.”</div>
-        <footer>
-          <span>10 days ago</span>
-          <div>
-            <i class="fas fa-flag fa-sm"></i>
-            <i class="fas fa-retweet fa-sm"></i>
-            <i class="fas fa-heart fa-sm"></i>
-          </div>
-        </footer>
-      </article> -->
-    <section id="tweets-container">
-      <!-- <button id="load-more">Load more tweets</button> -->
-    </section>
+      <!-- Display other tweets section -->
+      <section id="tweets-container"></section>
     </main>
   </body>
-</html>
+  </html>
+
+  
+
+  <!-- <article class="other-tweets">
+    <header>
+      <div>
+        <span>
+          <i class="far fa-user fa-lg"></i>
+          Barney
+        </span>
+      </div>
+      <span class="handle">@Stinsonator</span>
+    </header>
+    <div class="txt">“When I get sad, I stop being sad and be awesome instead.”</div>
+    <footer>
+      <span>10 days ago</span>
+      <div>
+        <i class="fas fa-flag fa-sm"></i>
+        <i class="fas fa-retweet fa-sm"></i>
+        <i class="fas fa-heart fa-sm"></i>
+      </div>
+    </footer>
+  </article> -->

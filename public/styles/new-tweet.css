@@ -43,3 +43,24 @@
   padding-right: 20px;
   padding-bottom: 20px;
 }
+
+.error-msg {
+  display: none;
+  text-align: center;
+  border: 4px solid red;
+  color: red;
+  font-family: Source Sans Pro, sans-serif;
+  font-size: 20pt;
+  margin: auto;
+  margin-top: 30px;
+  height: 40px;
+}
+
+#msg {
+  display: inline;
+  color: red;
+}
+
+#exclamation {
+  color: red;
+}
