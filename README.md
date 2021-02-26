@@ -13,6 +13,7 @@ Tweeter was made during fourth week of Lighthouse Labs web development bootcamp.
 !["responsive design (mobile)"](https://github.com/SilkyCin/tweeter/blob/master/DOCS/responsive%20design%20mobile.png?raw=true)
 !["responsive design (tablet)"](https://github.com/SilkyCin/tweeter/blob/master/DOCS/ipad.png?raw=true)
 
+
 ## Features
 1. Responsive Design
   > app is responsive to all screen sizes, with layouts changing to fit your screen size.
@@ -21,12 +22,14 @@ Tweeter was made during fourth week of Lighthouse Labs web development bootcamp.
 3. Personal Bio 
   > currently only available on large screen devices (see upcoming features)
 
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.
 2. Install dependencies using the `npm install` command.
 3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
 4. Go to <http://localhost:8080/> in your browser.
+
 
 ## Dependencies
 
@@ -35,6 +38,7 @@ Tweeter was made during fourth week of Lighthouse Labs web development bootcamp.
 - Body Parser 1.15.x or above
 - Chance 1.0.x or above
 - MD5 2.1.x or above
+
 
 ## Upcoming features
 
