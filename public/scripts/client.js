@@ -34,7 +34,6 @@ $(document).ready(function () {
         </div>
         <span class="handle">${tweet.user.handle}</span>
       </header>
-      // escape used here to prevent XSS attacks
       <div class="txt">${escape(tweet.content.text)}</div>
       <footer>
         <span class="timestamp">${tweet.created_at}</span>
@@ -57,13 +56,13 @@ $(document).ready(function () {
     event.preventDefault();
     // serialize() turns form data into query string because our server is configured to receive that data format
     const serializeData = $(this).serialize();
-    // $.val() is Jquery and returns the text value with the spaces
-      const textLength = $("#tweet-text").val().length;
 
+    // converts message to how it was input before we can apply conditions
+      const textLength = $("#tweet-text").val().length;
       if (!textLength) {
-        //inserts custom message in HTML
+        // inserts custom message in HTML
         $("#msg").text("Your tweet must contain a message");
-        //coding to make the error message appear on page
+        // makes error message appear on page
         $("div#error").slideDown();
         return;
       } 
@@ -72,13 +71,12 @@ $(document).ready(function () {
         $("div#error").slideDown();
         return;
       }
-      //serialized data gets sent to the server via the data field of AJAX post request 
       $.ajax({ 
         url:"/tweets", 
         data: serializeData, 
         method: "POST",
       }).then(() => loadTweets()) 
-      //clear the message from the box after submit box is hit
+        //clear the message from the box after submit box is hit
         $(".tweet-box").trigger("reset");
         // resets counter to 140
         $("#counter").text('140'); 

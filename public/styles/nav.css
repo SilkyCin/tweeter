@@ -1,16 +1,20 @@
+@media only screen and (max-width:1023px) {
 .navbar {
   display: flex;
   justify-content: space-between;
   height: 120px;
   width: 100%;
   padding: 1.5em;
-  background-color: #4F000B;
+  /* background-color: #4F000B; */
   color: #FFFFFF;
   overflow: hidden;
   position: fixed; /*sets navbar to fixed position*/
   top: 0; /*sets position to the top*/
+  z-index: 6;
+  background-color: #ff9b54;
+  background-image: url("https://www.transparenttextures.com/patterns/light-wool.png");
 }
-
+}
 .write-a-tweet {
   max-height: 120px;
   font-family: Source Sans Pro;
@@ -32,4 +36,24 @@
   align-items: center;
   flex-direction: column;
   font-size: 26px;
+}
+
+
+@media only screen and (min-width:1024px) {
+  .navbar {
+    position: fixed; /*sets navbar to fixed position*/
+    top: 0; /*sets position to the top*/
+    background-color: #4F000B;
+    display: flex;
+    justify-content: space-between;
+    height: 120px;
+    width: 100%;
+    padding: 1.5em;
+    /* background-color: #4F000B; */
+    color: #FFFFFF;
+    overflow: hidden;
+    position: fixed; /*sets navbar to fixed position*/
+    top: 0; /*sets position to the top*/
+    z-index: 6;
+  }
 }
