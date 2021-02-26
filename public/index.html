@@ -51,7 +51,7 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <!-- Create your own tweet section -->
-      <span class="compose"> Compose Tweet: </span>
+      <header class="compose"> Compose Tweet: </header>
       <form id="new-tweet" action="/tweet" method="POST">
         <div class="write-tweet">
           <div id="error">
@@ -67,6 +67,7 @@
         </span>
       </form>
       <!-- Display other tweets section -->
+      <header class="recent">Recent Tweets:</header>
       <section id="tweets-container"></section>
     </main>
   </body>

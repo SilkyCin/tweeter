@@ -26,12 +26,10 @@ $(document).ready(function () {
     let $tweet = $(
       `<article class="other-tweets">
       <header>
-        <div>
-          <span>
-            <img src=${tweet.user.avatars}>
-            ${tweet.user.name}
-          </span>
-        </div>
+        <span class="person-icon">
+          <img class="icon" src=${tweet.user.avatars}>
+          ${tweet.user.name}
+        </span>
         <span class="handle">${tweet.user.handle}</span>
       </header>
       <div class="txt">${escape(tweet.content.text)}</div>
