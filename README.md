@@ -16,11 +16,11 @@ Tweeter was made during fourth week of Lighthouse Labs web development bootcamp.
 
 ## Features
 1. Responsive Design
-  > app is responsive to all screen sizes, with layouts changing to fit your screen size.
+    - app is responsive to all screen sizes, with layouts changing to fit your screen size.
 2. Error messages
-  > for when tweets don't meet character limits
+    - for when tweets don't meet character limits
 3. Personal Bio 
-  > currently only available on large screen devices (see upcoming features)
+    - currently only available on large screen devices (see upcoming features)
 
 
 ## Getting Started
