@@ -1,21 +1,17 @@
 .profile-background {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  align-self: flex-start;
+  margin-top: 120px;
   height: 400px;
   width: 100%;
+  font-family: Source Sans Pro;
+  font-size: 24px;
   color: #FFFFFF;
   background-color: #ff9b54;
   background-image: url("https://www.transparenttextures.com/patterns/light-wool.png");
-  font-family: Source Sans Pro;
-  font-size: 24px;
-  /* align-self: flex-start; */
-  /* position: fixed; sets navbar to fixed position */
-  /* top: 120px; sets position to the top */
-  /* z-index: 6; */
-  margin-top: 120px;
-  align-self: flex-start;
 }
 
 

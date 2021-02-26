@@ -36,7 +36,7 @@ $(document).ready(function () {
       </header>
       <div class="txt">${escape(tweet.content.text)}</div>
       <footer>
-        <span class="timestamp">${tweet.created_at}</span>
+        <span class="timestamp">${dateOfTweet(tweet.created_at)}</span>
         <div>
           <i class="fas fa-flag fa-sm"></i>
           <i class="fas fa-retweet fa-sm"></i>
@@ -61,13 +61,13 @@ $(document).ready(function () {
       const textLength = $("#tweet-text").val().length;
       if (!textLength) {
         // inserts custom message in HTML
-        $("#msg").text("Your tweet must contain a message");
+        $("#error-msg").text("Your tweet must contain a message");
         // makes error message appear on page
         $("div#error").slideDown();
         return;
       } 
       if (textLength > 140) {
-        $("#msg").text("Your tweet is longer than 140 characters");
+        $("#error-msg").text("Your tweet is longer than 140 characters");
         $("div#error").slideDown();
         return;
       }
@@ -77,7 +77,7 @@ $(document).ready(function () {
         method: "POST",
       }).then(() => loadTweets()) 
         //clear the message from the box after submit box is hit
-        $(".tweet-box").trigger("reset");
+        $("#new-tweet").trigger("reset");
         // resets counter to 140
         $("#counter").text('140'); 
         // hides error message when problem is corrected, after submit button hit
@@ -96,3 +96,24 @@ $(document).ready(function () {
   loadTweets();
 
 });
+
+
+const dateOfTweet = function(timestamp) {
+  const howLongAgoMilliseconds = Date.now() - timestamp;
+  const millsecondsPerMin = 1000*60;
+  const millsecondsPerHour = 1000*60*60;
+  const millsecondsPerDay = 1000*60*60*24;
+  if (howLongAgoMilliseconds > millsecondsPerDay) {
+    const howLongAgoDays = Math.ceil(howLongAgoMilliseconds / millsecondsPerDay);
+    return `${howLongAgoDays} days ago`;
+  }
+  if (howLongAgoMilliseconds > millsecondsPerHour) {
+    const howLongAgoHours = Math.ceil(howLongAgoMilliseconds / millsecondsPerHour);
+    return `${howLongAgoHours} hours ago`;
+  }
+  if (howLongAgoMilliseconds > millsecondsPerMin) {
+    const howLongAgoMins = Math.ceil(howLongAgoMilliseconds / millsecondsPerMin);
+    return `${howLongAgoMins} minutes ago`
+  }
+  return "just now"
+}

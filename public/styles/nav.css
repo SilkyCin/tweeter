@@ -1,26 +1,15 @@
-@media only screen and (max-width:1023px) {
 .navbar {
   display: flex;
   justify-content: space-between;
   height: 120px;
   width: 100%;
-  padding: 1.5em;
-  /* background-color: #4F000B; */
-  color: #FFFFFF;
-  overflow: hidden;
   position: fixed; /*sets navbar to fixed position*/
-  top: 0; /*sets position to the top*/
-  z-index: 6;
+  top: 0; /*positioned at top of page*/
+  padding: 35px;
+  color: #FFFFFF;
+  z-index: 2; /* layers navbar over other elements */
   background-color: #ff9b54;
   background-image: url("https://www.transparenttextures.com/patterns/light-wool.png");
-}
-}
-.write-a-tweet {
-  max-height: 120px;
-  font-family: Source Sans Pro;
-  font-size: 26px;
-  margin: 0;
-  color: white;
 }
 
 .logo {
@@ -28,7 +17,8 @@
   font-size: 36px;
 }
 
-.navright {
+/* container holding arrow icon and write tweet text*/
+.nav-right {
   height: 55px;
   width: 200px;
   display: flex;
@@ -38,22 +28,20 @@
   font-size: 26px;
 }
 
+.write-a-tweet {
+  font-family: Source Sans Pro;
+  font-size: 20px;
+}
 
+
+/* change appearance of navbar for large screens */
 @media only screen and (min-width:1024px) {
   .navbar {
-    position: fixed; /*sets navbar to fixed position*/
-    top: 0; /*sets position to the top*/
     background-color: #4F000B;
-    display: flex;
-    justify-content: space-between;
-    height: 120px;
-    width: 100%;
-    padding: 1.5em;
-    /* background-color: #4F000B; */
-    color: #FFFFFF;
-    overflow: hidden;
-    position: fixed; /*sets navbar to fixed position*/
-    top: 0; /*sets position to the top*/
-    z-index: 6;
+    background-image: none;
+  }
+ 
+  .write-a-tweet {
+    font-size: 26px;
   }
 }

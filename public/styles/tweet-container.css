@@ -17,7 +17,7 @@ article.other-tweets:hover {
   border: 4px solid #545149;
   border-radius: 25px;
   box-shadow: 10px 10px 10px #520b22;
-  color: #720026;
+  color: #545149;
   opacity: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -67,3 +67,6 @@ article.other-tweets footer {
 .fas {
   margin-left: 15px;
 }
+
+article.other-tweets:hover .fas {
+  color: #ff9b54;
