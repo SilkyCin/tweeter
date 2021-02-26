@@ -18,33 +18,29 @@ html {
   font-size: 36px;
 }
 
-/* Body of page; doesn't need "." in front of body because we are not calling on it using a class */
 body {
-  color: #545149;
-  background-color: #720026;
   font-family: Source Sans Pro, sans-serif;
   font-size: 24px;
+  color: #545149;
+  background-color: #720026;
 }
-
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
  
- /* this section will contain all the tweets */
+ /* this section will contain all the tweets within body */
 .container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin: auto;
   width: 90%;
-  color: #545149;
-  background-color: #720026;
   font-family: Source Sans Pro, sans-serif;
   font-size: 24px;
+  color: #545149;
+  background-color: #720026;
 }
 
+/* adjust layout of container for large screen sizes */
 @media only screen and (min-width:1024px) {
   .container {
-    width: 50%;
+    width: 52%;
     padding-top: 30px;
-  }
+}

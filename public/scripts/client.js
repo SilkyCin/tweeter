@@ -1,12 +1,6 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 $(document).ready(function () {
   
-  // takes HTML formated tweet and puts it inside of container within page
+  // Takes HTML formated tweet and puts it inside of container within page
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet)
@@ -15,14 +9,14 @@ $(document).ready(function () {
   }
   
   const createTweetElement = function(tweet) {
-    // prevent XSS attacks via use of escape below
+    // Prevent XSS attacks via use of escape below
     const escape =  function(str) {
       let div = document.createElement('div');
       div.appendChild(document.createTextNode(str));
       return div.innerHTML;
     }
 
-    // converts text from tweet to HTML template
+    // Converts text from tweet to HTML template
     let $tweet = $(
       `<article class="other-tweets">
       <header>
@@ -47,43 +41,41 @@ $(document).ready(function () {
   };
   
 
-  // this function uses AJAX to post tweets to database
-  // listen to form submission with JQuery's submit handler
+  // Listen to form submission with JQuery's submit handler
   $("#new-tweet").on("submit", function(event) {
-    // prevent the default form submission process
+    // Prevent the default form submission process
     event.preventDefault();
-    // serialize() turns form data into query string because our server is configured to receive that data format
+    // Serialize() turns form data into query string because our server is configured to receive that data format
     const serializeData = $(this).serialize();
-
-    // converts message to how it was input before we can apply conditions
-      const textLength = $("#tweet-text").val().length;
-      if (!textLength) {
-        // inserts custom message in HTML
-        $("#error-msg").text("Your tweet must contain a message");
-        // makes error message appear on page
-        $("div#error").slideDown();
-        return;
-      } 
-      if (textLength > 140) {
-        $("#error-msg").text("Your tweet is longer than 140 characters");
-        $("div#error").slideDown();
-        return;
-      }
-      $.ajax({ 
-        url:"/tweets", 
-        data: serializeData, 
-        method: "POST",
-      }).then(() => loadTweets()) 
-        //clear the message from the box after submit box is hit
-        $("#new-tweet").trigger("reset");
-        // resets counter to 140
-        $("#counter").text('140'); 
-        // hides error message when problem is corrected, after submit button hit
-        $("div#error").slideUp(); 
-        // activates cursor in text box automatically
-        $("#tweet-text").focus(); 
+    
+    // Control post result depending on user input
+    // First convert message to original format input 
+    const textLength = $("#tweet-text").val().length;
+    if (!textLength) {
+      // Inserts custom message in HTML & show message on page
+      $("#error-msg").text("Your tweet must contain a message");
+      $("div#error").slideDown();
+      return;
+    } 
+    if (textLength > 140) {
+      $("#error-msg").text("Your tweet is longer than 140 characters");
+      $("div#error").slideDown();
+      return;
+    }
+    // Use AJAX to post tweets to database & immediately render on page without refreshing
+    $.ajax({ 
+      url:"/tweets", 
+      data: serializeData, 
+      method: "POST",
+    }).then(() => loadTweets()) 
+      //Reset counter to 140, hide error messages & activate cursor in cleared form field after successful posts
+      $("#new-tweet").trigger("reset");
+      $("#counter").text('140'); 
+      $("div#error").slideUp(); 
+      $("#tweet-text").focus(); 
   });
 
+  // show recent tweets on page
   const loadTweets = function() {
     $.ajax({
       url: "/tweets", 
@@ -95,7 +87,7 @@ $(document).ready(function () {
 
 });
 
-
+// converts the datestamp to length of time ago, in various increments
 const dateOfTweet = function(timestamp) {
   const howLongAgoMilliseconds = Date.now() - timestamp;
   const millsecondsPerMin = 1000*60;
