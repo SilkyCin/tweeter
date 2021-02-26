@@ -14,6 +14,11 @@
   border-radius: 25px;
 }
 
+#new-tweet:hover {
+  box-shadow: 10px 10px 10px #520b22;
+  color: #545149;
+}
+
 /* box holding text area */
 .write-tweet {
   display: flex;
@@ -22,7 +27,7 @@
   padding: 20px 20px 0px 20px;
 }
 
-/* text area */
+/* text input area */
 #tweet-text {
   color: #545149;
   background-color: #f4f1ec;
@@ -31,6 +36,9 @@
   overflow: auto;
   border: none;
   border-bottom: 4px solid #545149;
+}
+
+#new-tweet:hover #tweet-text{
   font-weight: bold;
 }
 
