@@ -3,7 +3,7 @@ const characterCounter = function (){
     const max = 140;
     let length = $(this).val().length;
     let numOfCharsLeft = max - length;
-    if (length >= max) {
+    if (length > max) {
       $("#counter").text(numOfCharsLeft);
       $("#counter").css("color", "red")
     } else {

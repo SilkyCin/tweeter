@@ -1,46 +1,78 @@
-$(document).ready(function () {
-  
-  // Takes HTML formated tweet and puts it inside of container within page
-  const renderTweets = function(tweets) {
-    for (const tweet of tweets) {
-      const $tweet = createTweetElement(tweet)
-      $("#tweets-container").prepend($tweet);
-    }
+const createTweetElement = function(tweet) {
+  // Prevent XSS attacks via use of escape in HTML template below
+  const escape =  function(str) {
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
   }
   
-  const createTweetElement = function(tweet) {
-    // Prevent XSS attacks via use of escape below
-    const escape =  function(str) {
-      let div = document.createElement('div');
-      div.appendChild(document.createTextNode(str));
-      return div.innerHTML;
-    }
-
-    // Converts text from tweet to HTML template
-    let $tweet = $(
-      `<article class="other-tweets">
-      <header>
-        <span class="person-icon">
-          <img class="icon" src=${tweet.user.avatars}>
-          ${tweet.user.name}
-        </span>
-        <span class="handle">${tweet.user.handle}</span>
-      </header>
-      <div class="txt">${escape(tweet.content.text)}</div>
-      <footer>
-        <span class="timestamp">${dateOfTweet(tweet.created_at)}</span>
-        <div>
-          <i class="fas fa-flag fa-sm"></i>
-          <i class="fas fa-retweet fa-sm"></i>
-          <i class="fas fa-heart fa-sm"></i>
-        </div>
-      </footer>
+  // Converts text from tweet to HTML template
+  const $tweet = $(
+    `<article class="other-tweets">
+    <header>
+    <span class="person-icon">
+    <img class="icon" src=${tweet.user.avatars}>
+    ${tweet.user.name}
+    </span>
+    <span class="handle">${tweet.user.handle}</span>
+    </header>
+    <div class="txt">${escape(tweet.content.text)}</div>
+    <footer>
+    <span class="timestamp">${dateOfTweet(tweet.created_at)}</span>
+    <div>
+    <i class="fas fa-flag fa-sm"></i>
+    <i class="fas fa-retweet fa-sm"></i>
+    <i class="fas fa-heart fa-sm"></i>
+    </div>
+    </footer>
     </article>`
-    )
-    return $tweet;
-  };
+  )
+  return $tweet;
+};
   
+// Takes HTML formated tweet and puts it inside of container within page
+const renderTweets = function(tweets) {
+  $("#tweets-container").empty();
+  for (const tweet of tweets) {
+    const $tweet = createTweetElement(tweet)
+    $("#tweets-container").prepend($tweet);
+  }
+}
 
+// show recent tweets on page
+const loadTweets = function() {
+  $.ajax({
+    url: "/tweets", 
+    method: 'GET',
+    success: "this get request was a success"
+  }).then((tweets) => renderTweets(tweets))
+}
+
+// converts the datestamp to length of time ago, in various increments
+const dateOfTweet = function(timestamp) {
+  const howLongAgoMilliseconds = Date.now() - timestamp;
+  const millsecondsPerMin = 1000*60;
+  const millsecondsPerHour = 1000*60*60;
+  const millsecondsPerDay = 1000*60*60*24;
+  if (howLongAgoMilliseconds > millsecondsPerDay) {
+    const howLongAgoDays = Math.ceil(howLongAgoMilliseconds / millsecondsPerDay);
+    return `${howLongAgoDays} days ago`;
+  }
+  if (howLongAgoMilliseconds > millsecondsPerHour) {
+    const howLongAgoHours = Math.ceil(howLongAgoMilliseconds / millsecondsPerHour);
+    return `${howLongAgoHours} hours ago`;
+  }
+  if (howLongAgoMilliseconds > millsecondsPerMin) {
+    const howLongAgoMins = Math.ceil(howLongAgoMilliseconds / millsecondsPerMin);
+    return `${howLongAgoMins} minutes ago`
+  }
+  return "just now"
+}
+
+
+
+$(document).ready(function () {
+  
   // Listen to form submission with JQuery's submit handler
   $("#new-tweet").on("submit", function(event) {
     // Prevent the default form submission process
@@ -75,35 +107,6 @@ $(document).ready(function () {
       $("#tweet-text").focus(); 
   });
 
-  // show recent tweets on page
-  const loadTweets = function() {
-    $.ajax({
-      url: "/tweets", 
-      method: 'GET',
-      success: "this get request was a success"
-    }).then((tweets) => renderTweets(tweets))
-  }
   loadTweets();
 
 });
-
-// converts the datestamp to length of time ago, in various increments
-const dateOfTweet = function(timestamp) {
-  const howLongAgoMilliseconds = Date.now() - timestamp;
-  const millsecondsPerMin = 1000*60;
-  const millsecondsPerHour = 1000*60*60;
-  const millsecondsPerDay = 1000*60*60*24;
-  if (howLongAgoMilliseconds > millsecondsPerDay) {
-    const howLongAgoDays = Math.ceil(howLongAgoMilliseconds / millsecondsPerDay);
-    return `${howLongAgoDays} days ago`;
-  }
-  if (howLongAgoMilliseconds > millsecondsPerHour) {
-    const howLongAgoHours = Math.ceil(howLongAgoMilliseconds / millsecondsPerHour);
-    return `${howLongAgoHours} hours ago`;
-  }
-  if (howLongAgoMilliseconds > millsecondsPerMin) {
-    const howLongAgoMins = Math.ceil(howLongAgoMilliseconds / millsecondsPerMin);
-    return `${howLongAgoMins} minutes ago`
-  }
-  return "just now"
-}
