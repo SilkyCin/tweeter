@@ -1,8 +1,8 @@
 const characterCounter = function (){
   $("#tweet-text").on("input", function() {
     const max = 140;
-    let length = $(this).val().length;
-    let numOfCharsLeft = max - length;
+    const length = $(this).val().length;
+    const numOfCharsLeft = max - length;
     if (length > max) {
       $("#counter").text(numOfCharsLeft);
       $("#counter").css("color", "red")
